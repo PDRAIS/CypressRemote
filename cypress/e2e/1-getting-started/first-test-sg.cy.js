@@ -1,5 +1,6 @@
 describe("Source Regression Tests", () => {
-  it("navigate to NBS Source", () => {
+  // first Test - navigate to dyson manufacturer homepage on nbs source
+    it("navigate to NBS Source", () => {
     cy.visit("https://source.thenbs.com");
     cy.get("#mat-input-0").click();
     cy.get("#mat-input-0").type("Dyson");
@@ -9,4 +10,12 @@ describe("Source Regression Tests", () => {
       "https://source.thenbs.com/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/overview"
     );
   });
+
+  it("name of second test", () => {
+    // test steps for the second test
+
+    
+  });
+
+
 });
