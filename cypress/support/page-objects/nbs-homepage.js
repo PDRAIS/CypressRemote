@@ -1,5 +1,7 @@
 /// <reference types="cypress" />
 
+import DysonManufacturerHomepage from "./dyson-manufacturer-homepage";
+
 class NbsHomepage {
 
   // ************************Page elements selectors******************************
@@ -9,6 +11,7 @@ class NbsHomepage {
       nbsHomePageUrl: "https://source.thenbs.com",
       acceptAllCookiesButton: 'button:contains("Accept All Cookies")',
       searchField: 'data-cy="searchFieldSearch"',
+      dysonManufacturerHomePage: 'https://source.thenbs.com/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/overview'
       
     };
   }
@@ -25,7 +28,7 @@ class NbsHomepage {
     cy.contains("Dyson", { timeout: 10000 }).should('be.visible').click({ force: true });
     cy.url({ timeout: 10000 }).should(
       "include",
-      "https://source.thenbs.com/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/overview"
+      this.elements.dysonManufacturerHomePage
     );
   }
 

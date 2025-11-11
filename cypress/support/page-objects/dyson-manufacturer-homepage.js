@@ -25,8 +25,13 @@ class DysonManufacturerHomepage {
   }
 
   // Page actions/methods
-  visit() {
-    // Method to visit the page
+  verifyTelephoneNo() {
+    // Method to verify the telephone number
+    cy.contains("a", "08003457788", { timeout: 10000 })
+      .should("be.visible")
+      .should("have.attr", "href", "tel:08003457788")
+      .should("have.attr", "title", "Call 08003457788")
+      .and("have.attr", "action", "telephone");
   }
 
   // Verification methods

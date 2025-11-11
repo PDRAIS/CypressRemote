@@ -15,11 +15,7 @@ describe("Source Regression Tests", () => {
   // test scenario 1 - verify telephone number, h1 value and NBS Source logo href
   it("verify the telephone number is correct with expected href", () => {
     // Verify the telephone link element
-    cy.contains("a", "08003457788", { timeout: 10000 })
-      .should("be.visible")
-      .should("have.attr", "href", "tel:08003457788")
-      .should("have.attr", "title", "Call 08003457788")
-      .and("have.attr", "action", "telephone");
+    dysonManufacturerHomepage.verifyTelephoneNo();
   });
 
   //test scenario 2 - verify h1 value
