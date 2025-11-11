@@ -12,13 +12,13 @@ describe("Source Regression Tests", () => {
     nbsHomepage.visitDysonManufacturerHomePage();
   });
 
-  // test scenario 1 - verify telephone number, h1 value and NBS Source logo href
+  // test scenario 1 - verify telephone number attributes
   it("verify the telephone number is correct with expected href", () => {
     // Verify the telephone link element
     dysonManufacturerHomepage.verifyTelephoneNo();
   });
 
-  //test scenario 2 - verify h1 value
+  // test scenario 2 - verify h1 value
   it("verify h1 value is correct", () => {
     // verify the h1 value shows correct text
     dysonManufacturerHomepage.verifyH1Value();
