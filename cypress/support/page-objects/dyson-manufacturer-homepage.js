@@ -34,6 +34,12 @@ class DysonManufacturerHomepage {
     cy.get("h1").should("be.visible").should("contain.text", "Dyson");
   }
 
+  // Verification methods
+  verifyH1Value() {
+    // Method to verify the H1 value
+    cy.get("h1").should("be.visible").should("contain.text", "Dyson");
+  }
+
   // Interaction methods
   
 }

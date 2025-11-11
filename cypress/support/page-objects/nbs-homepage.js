@@ -9,8 +9,8 @@ class NbsHomepage {
   get elements() {
     return {
       nbsHomePageUrl: "https://source.thenbs.com",
-      acceptAllCookiesButton: 'button:contains("Accept All Cookies")',
-      searchField: 'data-cy="searchFieldSearch"',
+      acceptAllCookiesButton: 'button',
+      searchField: '[data-cy="searchFieldSearch"]', // Selector for the homepage search input field
       dysonManufacturerHomePage: 'https://source.thenbs.com/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/overview'
       
     };
@@ -22,9 +22,9 @@ class NbsHomepage {
     // Method to visit the page
     cy.visit(this.elements.nbsHomePageUrl);
     // cy.get("#onetrust-accept-btn-handler").click();
-    cy.contains("button", this.elements.acceptAllCookiesButton).click();
-    cy.get(this.elements.searchField).click();
-    cy.get(this.elements.searchField).type("Dyson");
+    cy.contains(this.elements.acceptAllCookiesButton, 'Accept All Cookies').click();
+    //cy.get(this.elements.searchField).click();
+    cy.get(this.elements.searchField).first().type("Dyson");
     cy.contains("Dyson", { timeout: 10000 }).should('be.visible').click({ force: true });
     cy.url({ timeout: 10000 }).should(
       "include",
