@@ -9,8 +9,13 @@
   "scripts": {
     "cypress:open": "cypress open",
     "cypress:run": "cypress run"
-},
+  },
   "devDependencies": {
+    "@badeball/cypress-cucumber-preprocessor": "^23.2.1",
+    "@bahmutov/cypress-esbuild-preprocessor": "^2.2.7",
     "cypress": "^15.6.0"
+  },
+  "cypress-cucumber-preprocessor": {
+    "stepDefinitions": "cypress/e2e/step_definitions/**/*.{js,ts}"
   }
 }
