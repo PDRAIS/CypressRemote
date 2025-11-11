@@ -17,14 +17,14 @@ Feature: NBS Source Dyson Manufacturer Page Regression Tests
     Background:
         Given I have navigated to the Dyson Manufacturer Homepage
 
-    # Scenario 1: Verify the telephone number is correct with expected href
+    # Test Scenario 1: Verify the telephone number is correct with expected href
     Scenario: Verify the telephone number is correct with expected href
         Then I will see the correct telephone number in UI with expected href
 
-    # Scenario 2: Verify the page heading (h1) value is correct
+    # Test Scenario 2: Verify the page heading (h1) value is correct
     Scenario: Verify the page heading (h1) value is correct
         Then I will see the correct h1 heading value in UI
 
-    # Scenario 3: Verify the page title is correct
+    # Test Scenario 3: Verify the page title is correct
     Scenario: Verify source logo href is as expected
         Then the source logo href is as expected
