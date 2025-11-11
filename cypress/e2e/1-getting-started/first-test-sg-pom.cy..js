@@ -1,18 +1,18 @@
+/// <reference types="cypress" />
+
+import NbsHomepage from "../../support/page-objects/nbs-homepage";
+import DysonManufacturerHomepage from "../../support/page-objects/dyson-manufacturer-homepage";
+
 describe("Source Regression Tests", () => {
+  // create a new instance of the NbsHomepage and DysonManufacturerHomepage classes so we can use them
+  const nbsHomepage = new NbsHomepage();
+  const dysonManufacturerHomepage = new DysonManufacturerHomepage();
+  // before each test, navigate to Dyson manufacturer overview page
   beforeEach(() => {
-    cy.visit("https://source.thenbs.com");
-    // cy.get("#onetrust-accept-btn-handler").click();
-    cy.contains("button", "Accept All Cookies").click();
-    cy.get("#mat-input-0").click();
-    cy.get("#mat-input-0").type("Dyson");
-    cy.get("#cdk-overlay-0 a.truncate", { timeout: 10000 }).click();
-    cy.url({ timeout: 10000 }).should(
-      "include",
-      "https://source.thenbs.com/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/overview"
-    );
+    nbsHomepage.visitDysonManufacturerHomePage();
   });
 
-
+  // test scenario 1 - verify telephone number, h1 value and NBS Source logo href
   it("verify the telephone number is correct with expected href", () => {
     // Verify the telephone link element
     cy.contains("a", "08003457788", { timeout: 10000 })
@@ -22,12 +22,13 @@ describe("Source Regression Tests", () => {
       .and("have.attr", "action", "telephone");
   });
 
+  //test scenario 2 - verify h1 value
   it("verify h1 value is correct", () => {
     // verify the h1 value shows correct text
     cy.get("h1").should("be.visible").should("contain.text", "Dyson");
   });
 
-
+  // test scenario 3 - verify NBS Source logo href
   it("verify NBS Source logo href is correct", () => {
     // Verify the NBS Source logo link has correct href
     cy.contains("NBS Source")
