@@ -21,17 +21,12 @@ describe("Source Regression Tests", () => {
   //test scenario 2 - verify h1 value
   it("verify h1 value is correct", () => {
     // verify the h1 value shows correct text
-    cy.get("h1").should("be.visible").should("contain.text", "Dyson");
+    dysonManufacturerHomepage.verifyH1Value();
   });
 
   // test scenario 3 - verify NBS Source logo href
   it("verify NBS Source logo href is correct", () => {
     // Verify the NBS Source logo link has correct href
-    cy.contains("NBS Source")
-      .should("be.visible")
-      .should("have.attr", "href", "/")
-      .should("have.class", "brand-primary")
-      .should("have.class", "wrapper")
-      .should("contain", "NBS Source");
+    dysonManufacturerHomepage.verifyNBSSourceLogoHref();
   });
 });

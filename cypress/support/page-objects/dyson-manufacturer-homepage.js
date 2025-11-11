@@ -11,15 +11,9 @@ class DysonManufacturerHomepage {
 
   get elements() {
     return {
-      // Navigation elements
-      
-      // Header elements
-      
-      // Main content elements
-      
-      // Form elements
-      
-      // Footer elements
+      telText: "08003457788",
+      telTitle: "Call 08003457788",
+      telHref: "tel:08003457788"
       
     };
   }
@@ -27,16 +21,17 @@ class DysonManufacturerHomepage {
   // Page actions/methods
   verifyTelephoneNo() {
     // Method to verify the telephone number
-    cy.contains("a", "08003457788", { timeout: 10000 })
+    cy.contains("a", this.elements.telText, { timeout: 10000 })
       .should("be.visible")
-      .should("have.attr", "href", "tel:08003457788")
-      .should("have.attr", "title", "Call 08003457788")
+      .should("have.attr", "href", this.elements.telHref)
+      .should("have.attr", "title", this.elements.telTitle)
       .and("have.attr", "action", "telephone");
   }
 
   // Verification methods
-  verifyPageLoaded() {
-    // Method to verify page has loaded correctly
+  verifyH1Value() {
+    // Method to verify the H1 value
+    cy.get("h1").should("be.visible").should("contain.text", "Dyson");
   }
 
   // Interaction methods
