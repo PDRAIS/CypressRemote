@@ -60,10 +60,11 @@ describe("Source Regression Tests", () => {
       "include",
       "https://source.thenbs.com/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/overview"
     );
-    cy.get("app-product-logo-with-name").first()
-      .should('exist')
-      .and('be.visible')
+    cy.get('a.brand-primary.wrapper[href="/"]')
+      .should('be.visible')
       .and('have.attr', 'href', '/')
+      .find('app-name')
+      .should('have.text', 'NBS Source');
 
 
   });
