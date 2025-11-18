@@ -29,7 +29,28 @@ describe("Source Regression Tests", () => {
   //     .and("be.visible");
   // });
 
-  it("Verify H1 title on page is Dyson ", () => {
+  // it("Verify H1 title on page is Dyson ", () => {
+  //   cy.visit("https://source.thenbs.com");
+  //   cy.get("#mat-input-0").click();
+  //   cy.get("#mat-input-0").type("Dyson");
+  //   cy.get("#cdk-overlay-0 a.truncate").click();
+
+  //   cy.url().should(
+  //     "include",
+  //     "https://source.thenbs.com/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/overview"
+  //   );
+  //   cy.get('h1')
+  //     .should('exist')
+  //     .and('be.visible')
+  //     .and('have.text', 'Dyson');
+
+
+
+
+  // });
+
+
+  it("Confirm that the logo  Href attribute present ", () => {
     cy.visit("https://source.thenbs.com");
     cy.get("#mat-input-0").click();
     cy.get("#mat-input-0").type("Dyson");
@@ -39,12 +60,10 @@ describe("Source Regression Tests", () => {
       "include",
       "https://source.thenbs.com/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/overview"
     );
-    cy.get('h1')
+    cy.get("app-product-logo-with-name").first()
       .should('exist')
       .and('be.visible')
-      .and('have.text', 'Dyson');
-
-
+      .and('have.attr', 'href', '/')
 
 
   });
