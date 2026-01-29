@@ -22,7 +22,7 @@ class NbsHomepage {
     // Method to visit the page
     cy.visit(this.elements.nbsHomePageUrl);
     // cy.get("#onetrust-accept-btn-handler").click();
-    cy.contains("button", this.elements.acceptAllCookiesButton).click();
+    //cy.contains("button", this.elements.acceptAllCookiesButton).click();
     cy.get(this.elements.searchField).click();
     cy.get(this.elements.searchField).type("Dyson");
     cy.contains("Dyson", { timeout: 10000 }).should('be.visible').click({ force: true });

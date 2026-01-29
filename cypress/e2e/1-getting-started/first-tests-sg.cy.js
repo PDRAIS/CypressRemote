@@ -3,7 +3,7 @@ describe("Source Regression Tests", () => {
   it("navigate to NBS Source", () => {
     cy.visit("https://source.thenbs.com");
     // cy.get("#onetrust-accept-btn-handler").click();
-    cy.contains("button", "Accept All Cookies").click();
+    // cy.contains("button", "Accept All Cookies").click();
     cy.get("#mat-input-0").click();
     cy.get("#mat-input-0").type("Dyson");
     cy.get("#cdk-overlay-0 a.truncate", { timeout: 10000 }).click();
@@ -17,7 +17,7 @@ describe("Source Regression Tests", () => {
     // Navigate to the page and accept cookies
     cy.visit("https://source.thenbs.com");
     // cy.contains('button', 'Accept All Cookies').debug().click();
-    cy.contains("button", "Accept All Cookies").click();
+    // cy.contains("button", "Accept All Cookies").click();
     cy.get("#mat-input-0").click();
     cy.get("#mat-input-0").type("Dyson");
     cy.get("#cdk-overlay-0 a.truncate", { timeout: 10000 }).click();
@@ -37,7 +37,7 @@ describe("Source Regression Tests", () => {
   it("verify h1 value is correct", () => {
     cy.visit("https://source.thenbs.com");
     // cy.get("#onetrust-accept-btn-handler").click();
-    cy.contains("button", "Accept All Cookies").click();
+    // cy.contains("button", "Accept All Cookies").click();
     cy.get("#mat-input-0").click();
     cy.get("#mat-input-0").type("Dyson");
     cy.get("#cdk-overlay-0 a.truncate", { timeout: 10000 }).click();
@@ -53,7 +53,7 @@ describe("Source Regression Tests", () => {
 
   it("verify NBS Source logo href is correct", () => {
     cy.visit("https://source.thenbs.com");
-    cy.contains("button", "Accept All Cookies").click();
+    // cy.contains("button", "Accept All Cookies").click();
     cy.get("#mat-input-0").click();
     cy.get("#mat-input-0").type("Dyson");
     cy.get("#cdk-overlay-0 a.truncate", { timeout: 10000 }).click();
