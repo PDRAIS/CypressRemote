@@ -18,6 +18,43 @@ describe("Source Regression Tests", () => {
     cy.get("#mat-input-0").click();
     cy.get("#mat-input-0").type("Dyson");
     cy.get("#cdk-overlay-0 a.truncate").click();
+
+    cy.url().should(
+      "include",
+      "https://source.thenbs.com/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/overview"
+    );
+
+    cy.contains("a", "08003457788")
+      .should("have.attr", "href", "tel:08003457788")
+      .and("be.visible");
+  });
+
+  it("Verify H1 title on page is Dyson ", () => {
+    cy.visit("https://source.thenbs.com");
+    cy.get("#mat-input-0").click();
+    cy.get("#mat-input-0").type("Dyson");
+    cy.get("#cdk-overlay-0 a.truncate").click();
+
+    cy.url().should(
+      "include",
+      "https://source.thenbs.com/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/overview"
+    );
+    cy.get('h1')
+      .should('exist')
+      .and('be.visible')
+      .and('have.text', 'Dyson');
+
+
+
+
+  });
+
+
+  it("Confirm that the logo  Href attribute present ", () => {
+    cy.visit("https://source.thenbs.com");
+    cy.get("#mat-input-0").click();
+    cy.get("#mat-input-0").type("Dyson");
+    cy.get("#cdk-overlay-0 a.truncate").click();
     
     cy.url().should(
       "include",
@@ -32,3 +69,5 @@ describe("Source Regression Tests", () => {
   });
 
 });
+
+
