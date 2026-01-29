@@ -18,15 +18,17 @@ describe("Source Regression Tests", () => {
     cy.get("#mat-input-0").click();
     cy.get("#mat-input-0").type("Dyson");
     cy.get("#cdk-overlay-0 a.truncate").click();
-
+    
     cy.url().should(
       "include",
       "https://source.thenbs.com/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/overview"
     );
-
+    
     cy.contains("a", "08003457788")
       .should("have.attr", "href", "tel:08003457788")
       .and("be.visible");
+    cy.get('a[action="manufacturer-header-link"]').should('be.visible');
+    cy.get('a[action="manufacturer-header-link"]').should('have.text', ' I\'m a manufacturer ');
   });
 
 });
