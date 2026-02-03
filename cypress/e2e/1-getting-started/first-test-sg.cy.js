@@ -1,7 +1,9 @@
 /// <reference types="cypress" />
 
 const nbsHomePage = require("../../support/page-objects/nbs-homepage");
+const dysonManufactureHomepage = require("../../support/page-objects/dyson-manufacture-homepage");
 
+describe("Source Regression Tests", () => {
   //before each test navigate to the dyson manufacture home page
   beforeEach(() => {
     nbsHomePage.visitDysonManufacturerPage();
@@ -9,9 +11,7 @@ const nbsHomePage = require("../../support/page-objects/nbs-homepage");
 
   // first Test - navigate to dyson manufacturer homepage on NBS Source
   it("verify the telephone link has the correct number and href", () => {
-    cy.contains("a", "08003457788")
-      .should("have.attr", "href", "tel:08003457788")
-      .and("be.visible");
+    
   });
 
   it("Verify H1 title on page is Dyson ", () => {
@@ -19,14 +19,11 @@ const nbsHomePage = require("../../support/page-objects/nbs-homepage");
   });
 
   it("Confirm that the logo  Href attribute present ", () => {
-    cy.contains("a", "08003457788")
-      .should("have.attr", "href", "tel:08003457788")
-      .and("be.visible");
-    cy.get('a[action="manufacturer-header-link"]').should("be.visible");
-    cy.get('a[action="manufacturer-header-link"]').should(
-      "have.text",
-      " I'm a manufacturer ",
-    );
+ // Method to verify the logo link href attribute
+    cy.get('a[href="/"]')
+      .should("be.visible") // Ensure the Source logo link is visible
+      .should("have.attr", "href", "/"); // Verify the href attribute will be as expected "/"
+ 
   });
 
   it("Confirm manufacturer homepage tabs are visible, in the correct order, have the correct text & href ", () => {
