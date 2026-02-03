@@ -9,5 +9,3 @@ describe("Source Regression Tests", () => {
     cy.get('#content a.dt-btn span').should('be.visible');
     cy.get('#content div.vc_custom_1712244435327 h2').click();
   });
-
-  
