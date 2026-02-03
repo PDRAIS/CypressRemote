@@ -1,57 +1,24 @@
-describe("Source Regression Tests", () => {
-  // first Test - navigate to dyson manufacturer homepage on NBS Source
-  it("navigate to NBS Source", () => {
-    cy.visit("https://source.thenbs.com");
-    cy.get("#mat-input-0").click();
-    cy.get("#mat-input-0").type("Dyson");
-    cy.get("#cdk-overlay-0 a.truncate").click();
+/// <reference types="cypress" />
 
-    cy.url().should(
-      "include",
-      "https://source.thenbs.com/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/overview",
-    );
+const nbsHomePage = require("../../support/page-objects/nbs-homepage");
+
+  //before each test navigate to the dyson manufacture home page
+  beforeEach(() => {
+    nbsHomePage.visitDysonManufacturerPage();
   });
 
+  // first Test - navigate to dyson manufacturer homepage on NBS Source
   it("verify the telephone link has the correct number and href", () => {
-    cy.visit("https://source.thenbs.com");
-    cy.get("#mat-input-0").click();
-    cy.get("#mat-input-0").type("Dyson");
-    cy.get("#cdk-overlay-0 a.truncate").click();
-
-    cy.url().should(
-      "include",
-      "https://source.thenbs.com/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/overview",
-    );
-
     cy.contains("a", "08003457788")
       .should("have.attr", "href", "tel:08003457788")
       .and("be.visible");
   });
 
   it("Verify H1 title on page is Dyson ", () => {
-    cy.visit("https://source.thenbs.com");
-    cy.get("#mat-input-0").click();
-    cy.get("#mat-input-0").type("Dyson");
-    cy.get("#cdk-overlay-0 a.truncate").click();
-
-    cy.url().should(
-      "include",
-      "https://source.thenbs.com/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/overview",
-    );
     cy.get("h1").should("exist").and("be.visible").and("have.text", "Dyson");
   });
 
   it("Confirm that the logo  Href attribute present ", () => {
-    cy.visit("https://source.thenbs.com");
-    cy.get("#mat-input-0").click();
-    cy.get("#mat-input-0").type("Dyson");
-    cy.get("#cdk-overlay-0 a.truncate").click();
-
-    cy.url().should(
-      "include",
-      "https://source.thenbs.com/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/overview",
-    );
-
     cy.contains("a", "08003457788")
       .should("have.attr", "href", "tel:08003457788")
       .and("be.visible");
@@ -63,16 +30,6 @@ describe("Source Regression Tests", () => {
   });
 
   it("Confirm manufacturer homepage tabs are visible, in the correct order, have the correct text & href ", () => {
-    cy.visit("https://source.thenbs.com");
-    cy.get("#mat-input-0").click();
-    cy.get("#mat-input-0").type("Dyson");
-    cy.get("#cdk-overlay-0 a.truncate").click();
-
-    cy.url().should(
-      "include",
-      "https://source.thenbs.com/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/overview",
-    );
-
     const tabs = [
       {
         selector: '[data-cy="overviewTab"]',
