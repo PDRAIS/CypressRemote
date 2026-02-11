@@ -8,6 +8,10 @@ class DysonManufactureHomepage {
       h1Title: "h1",
       sourceLogoLink: 'a[href="/"]',
       tabOrder: "nav a[mat-tab-link]",
+
+
+
+
       tabs: [
         {
           selector: '[data-cy="overviewTab"]',
@@ -44,13 +48,27 @@ class DysonManufactureHomepage {
     };
   }
 
-  //******************************************Page Actions********************************** */
 
+
+  //******************************************Page Actions********************************** */
+// Method to verify the telephone link
   verifyTelephoneLink() {
     cy.get(this.elements.telephoneLink)
       .should("have.attr", "href", "tel:08003457788")
       .and("be.visible");
   }
+// Method to verify the H1 title on the page
+  verifyH1Title(expectedTitle) {
+    cy.get(this.elements.h1Title)
+      .should("exist")
+      .and("be.visible")
+      .and("have.text", expectedTitle);
+  }
+
+
 }
+
+
+
 
 module.exports = new DysonManufactureHomepage();

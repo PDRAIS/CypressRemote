@@ -11,11 +11,11 @@ describe("Source Regression Tests", () => {
 
   // first Test - navigate to dyson manufacturer homepage on NBS Source
   it("verify the telephone link has the correct number and href", () => {
-    
+    dysonManufactureHomepage.verifyTelephoneLink();
   });
 
-  it("Verify H1 title on page is Dyson ", () => {
-    cy.get("h1").should("exist").and("be.visible").and("have.text", "Dyson");
+  it("Verify H1 title on page is Dyson", () => {
+    dysonManufactureHomepage.verifyH1Title("Dyson");
   });
 
   it("Confirm that the logo  Href attribute present ", () => {
