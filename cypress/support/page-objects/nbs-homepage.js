@@ -32,5 +32,6 @@ visitDysonManufacturerPage() {
 
 
 }
-module.exports = new NBSHomePage();
+
+export default new NBSHomePage();
 

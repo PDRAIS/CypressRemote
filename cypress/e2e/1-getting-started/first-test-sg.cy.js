@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 
-const nbsHomePage = require("../../support/page-objects/nbs-homepage");
-const dysonManufactureHomepage = require("../../support/page-objects/dyson-manufacture-homepage");
+import nbsHomePage from "../../support/page-objects/nbs-homepage.js";
+import dysonManufactureHomepage from "../../support/page-objects/dyson-manufacture-homepage.js";
 
 describe("Source Regression Tests", () => {
   //before each test navigate to the dyson manufacture home page
@@ -14,63 +14,31 @@ describe("Source Regression Tests", () => {
     dysonManufactureHomepage.verifyTelephoneLink();
   });
 
+  //Second Test - verify the H1 title on the page is Dyson
   it("Verify H1 title on page is Dyson", () => {
     dysonManufactureHomepage.verifyH1Title("Dyson");
   });
 
+  //Third Test - verify the Source logo link is visible and has the correct href attribute
   it("Confirm that the logo  Href attribute present ", () => {
- // Method to verify the logo link href attribute
-    cy.get('a[href="/"]')
-      .should("be.visible") // Ensure the Source logo link is visible
-      .should("have.attr", "href", "/"); // Verify the href attribute will be as expected "/"
- 
+    dysonManufactureHomepage.verifySourceLogoLink();
   });
 
+  //Fourth Test - confirm manufacturer homepage tabs are visible, in the correct order, have the correct text & href
   it("Confirm manufacturer homepage tabs are visible, in the correct order, have the correct text & href ", () => {
-    const tabs = [
-      {
-        selector: '[data-cy="overviewTab"]',
-        text: "Overview",
-        href: "/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/overview",
-      },
-      {
-        selector: '[data-cy="productsTab"]',
-        text: "Products",
-        href: "/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/products",
-      },
-      {
-        selector: '[data-cy="certificatesTab"]',
-        text: "Certifications",
-        href: "/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/third-party-certifications",
-      },
-      {
-        selector: '[data-cy="literatureTab"]',
-        text: "Literature",
-        href: "/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/literature",
-      },
-      {
-        selector: '[data-cy="caseStudiesTab"]',
-        text: "Case studies",
-        href: "/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/case-studies",
-      },
-      {
-        selector: '[data-cy="aboutTab"]',
-        text: "About us",
-        href: "/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/about",
-      },
-    ];
+    dysonManufactureHomepage.verifyCorrectTabs();
 
-    // Verify each tab exists, is visible, has correct text and href
-    tabs.forEach((tab) => {
-      cy.get(tab.selector)
-        .should("be.visible")
-        .and("contain.text", tab.text)
-        .and("have.attr", "href", tab.href);
-    });
+  // Verify each tab exists, is visible, has correct text and href
+    dysonManufactureHomepage.verifyCorrectTabOrder();
+  });
 
-    // Verify correct order
-    cy.get("nav a[mat-tab-link]").each(($el, index) => {
-      cy.wrap($el).should("contain.text", tabs[index].text);
-    });
+  //Fifth Test - verify the Contact Manufacturer button is visible and has the correct href attribute
+  it("Confirm that the Contact Manufacturer button is visible and has the correct href attribute", () => {
+    dysonManufactureHomepage.verifyManufacturerContactButton();
+  });
+
+  //Sixth Test - verify the Certification bodies section is present and correct, including Quiet Mark Certification
+  it("Verify the Certification bodies section is present and correct, including Quiet Mark Certification", () => {
+    dysonManufactureHomepage.verifyCertificationBodies();
   });
 });
