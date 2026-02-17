@@ -13,10 +13,14 @@ class CommonObjects {
   verifyBackToTopButton() {
     //back to top button is not visible when the page is at the top
     cy.get(this.elements.backToTopButton).should("not.be.visible");
-    cy.scrollTo("bottom"); // Scroll to the bottom of the page
-    cy.get(this.elements.backToTopButton).should("be.visible"); //checks button is visible at bottom of page
-    cy.get(this.elements.backToTopButton).click(); // if button is visible click it
-    cy.get(this.elements.backToTopButton).should("not.be.visible"); // button no longer visible as we are back at the top of the page
+    // Scroll to the bottom of the page
+    cy.scrollTo("bottom"); 
+    //checks button is visible at bottom of page
+    cy.get(this.elements.backToTopButton).should("be.visible"); 
+    // if button is visible click it
+    cy.get(this.elements.backToTopButton).click();
+    // button no longer visible as we are back at the top of the page
+    cy.get(this.elements.backToTopButton).should("not.be.visible"); 
   }
 }
 
