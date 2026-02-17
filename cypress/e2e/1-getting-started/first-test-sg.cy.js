@@ -2,6 +2,7 @@
 
 import nbsHomePage from "../../support/page-objects/nbs-homepage.js";
 import dysonManufactureHomepage from "../../support/page-objects/dyson-manufacture-homepage.js";
+import commonObjects from "../../support/page-objects/common-objects.js";
 
 describe("Source Regression Tests", () => {
   //before each test navigate to the dyson manufacture home page
@@ -41,4 +42,11 @@ describe("Source Regression Tests", () => {
   it("Verify the Certification bodies section is present and correct, including Quiet Mark Certification", () => {
     dysonManufactureHomepage.verifyCertificationBodies();
   });
+
+
+  //Seventh Test - verify back to top button works correctly
+  it("Verify the back to top button works correctly", () => {
+    commonObjects.verifyBackToTopButton();
+  });
+
 });
