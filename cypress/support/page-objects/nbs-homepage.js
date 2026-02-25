@@ -27,16 +27,7 @@ visitDysonManufacturerPage() {
 
 }
 
-verifyBaselineImageSnapshot() {
-  cy.viewport(1000, 4410); // Set viewport to match the dimensions of the baseline image
-  cy.wait(2000); // Wait for the page to load completely
-  cy.scrollTo("bottom");// Scroll to the bottom of the page to ensure all elements are visible
-  cy.wait(3000);// Wait for any lazy-loaded content to load  
-  cy.matchImageSnapshot("Dyson-manufacturer-page", {
-    failureThreshold: 0.2, // Allowable percentage of pixel difference
-    failureThresholdType: "percent",
-  });      
-}
+
 
 
 

@@ -51,7 +51,7 @@ describe("Source Regression Tests", () => {
 
   //Eighth Test - verify the dyson manufacture homepage matches the baseline image
   it.only("Verify the dyson manufacture homepage matches the baseline image", () => {
-    nbsHomePage.verifyBaselineImageSnapshot();
+    dysonManufactureHomepage.verifyBaselineImageSnapshot();
   });
 
 });

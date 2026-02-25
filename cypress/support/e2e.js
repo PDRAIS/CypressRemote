@@ -14,7 +14,8 @@
 // ***********************************************************
 
 // Register cypress-image-snapshot commands
-require('cypress-image-snapshot/commands');
-
+const { addMatchImageSnapshotCommand } = require('cypress-image-snapshot/command');
+addMatchImageSnapshotCommand();
+ 
 // Import commands.js using ES2015 syntax:
 import './commands'
