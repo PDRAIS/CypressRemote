@@ -49,4 +49,9 @@ describe("Source Regression Tests", () => {
     commonObjects.verifyBackToTopButton();
   });
 
+  //Eighth Test - verify the dyson manufacture homepage matches the baseline image
+  it.only("Verify the dyson manufacture homepage matches the baseline image", () => {
+    nbsHomePage.verifyBaselineImageSnapshot();
+  });
+
 });

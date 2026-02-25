@@ -13,5 +13,8 @@
 // https://on.cypress.io/configuration
 // ***********************************************************
 
+// Register cypress-image-snapshot commands
+require('cypress-image-snapshot/commands');
+
 // Import commands.js using ES2015 syntax:
 import './commands'
