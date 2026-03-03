@@ -10,6 +10,7 @@ class DysonManufactureHomepage {
       contactManufacturerButton: 'button[title="Contact Dyson"]',
       contactManfactureButtonHref:
         "https://www.dyson.co.uk/commercial/overview/architects-designers",
+      geoLocation: 'button[aria-label="Choose region"]',
 
       tabs: [
         {
@@ -43,9 +44,10 @@ class DysonManufactureHomepage {
           href: "/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/about",
         },
       ],
-      certificationBodiesHeader: 'app-overview-issuing-body h3',
-      quietMarkCertification: 'app-overview-issuing-body a[title="View more Quiet Mark Certification"]',
-      quietMarkCertificationTitle: 'app-overview-issuing-body p.tile-title',
+      certificationBodiesHeader: "app-overview-issuing-body h3",
+      quietMarkCertification:
+        'app-overview-issuing-body a[title="View more Quiet Mark Certification"]',
+      quietMarkCertificationTitle: "app-overview-issuing-body p.tile-title",
     };
   }
 
@@ -56,7 +58,7 @@ class DysonManufactureHomepage {
       .should("have.attr", "href", "tel:08003457788")
       .and("be.visible");
   }
-  
+
   // Method to verify the H1 title on the page
   verifyH1Title(expectedTitle) {
     cy.get(this.elements.h1Title)
@@ -88,7 +90,7 @@ class DysonManufactureHomepage {
       cy.wrap($el).should("contain.text", this.elements.tabs[index].text);
     });
   }
-  
+
   //Method to confirm the contact manufature button is visible and href is correct
   //TODO Make Contactmanufacture generic so it can be used across different manufacture homepages
   verifyManufacturerContactButton() {
@@ -115,17 +117,53 @@ class DysonManufactureHomepage {
       .and("contain.text", "Quiet Mark Certification");
   }
 
-
   verifyBaselineImageSnapshot() {
-  cy.viewport(1000, 4410); // Set viewport to match the dimensions of the baseline image
-  cy.wait(2000); // Wait for the page to load completely
-  cy.scrollTo("bottom");// Scroll to the bottom of the page to ensure all elements are visible
-  cy.wait(3000);// Wait for any lazy-loaded content to load  
-  cy.matchImageSnapshot("Dyson-manufacturer-page", {
-    failureThreshold: 0.2, // Allowable percentage of pixel difference
-    failureThresholdType: "percent",
-  });      
-}
+    cy.viewport(1000, 4410); // Set viewport to match the dimensions of the baseline image
+    cy.wait(2000); // Wait for the page to load completely
+    cy.scrollTo("bottom"); // Scroll to the bottom of the page to ensure all elements are visible
+    cy.wait(3000); // Wait for any lazy-loaded content to load
+    cy.matchImageSnapshot("Dyson-manufacturer-page", {
+      failureThreshold: 0.2, // Allowable percentage of pixel difference
+      failureThresholdType: "percent",
+    });
+  }
+
+  /**
+   * Verifies that the geolocation API returns the correct country code and that the region button is properly displayed
+   * Validates both API response and UI elements match expected values for GB/UK
+   */
+  verifyUIandAPIContent() {
+    // Set viewport to standard desktop dimensions for consistent testing
+    cy.viewport(1100, 1200);
+
+    // Call the geolocation API to retrieve user's country information
+    cy.request({
+      method: "Get",
+      url: "https://geolocation.onetrust.com/cookieconsentpub/v1/geo/location",
+      failOnStatusCode: false, // Allow test to continue even if API returns non-2xx status
+    }).then((response) => {
+      // Extract JSON data from JSONP response using regex pattern
+      // Response format: jsonFeed({...data...});
+      const match = response.body.match(/jsonFeed\((.*)\);?/);
+
+      // Validate that response matches expected JSONP format
+      if (!match) {
+        throw new Error("Response does not contain expected JSONP format");
+      }
+
+      // Parse the extracted JSON string into an object
+      const body = JSON.parse(match[1]);
+
+      // Verify the geolocation API returns GB as the country code
+      expect(["GB"]).to.include(body.country);
+
+      // Confirm the region selector button exists and displays the correct region text
+      cy.get(this.elements.geoLocation, { timeout: 10000 })
+        .should("exist")
+        .invoke("text")
+        .should("contain", "UK");
+    });
+  }
 }
 
 export default new DysonManufactureHomepage();
