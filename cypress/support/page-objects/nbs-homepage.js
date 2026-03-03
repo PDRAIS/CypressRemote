@@ -21,11 +21,11 @@ visitDysonManufacturerPage() {
     cy.url().should(
       "include",
       "https://source.thenbs.com/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/overview",
+
     );
+
+
 }
-
-
-
 
 
 
