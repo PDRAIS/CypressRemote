@@ -157,11 +157,11 @@ class DysonManufactureHomepage {
       // Verify the geolocation API returns GB or US as the country code
       expect(["GB", "US"]).to.include(body.country);
 
-      // Confirm the region selector button exists and displays UK or US
+      // Confirm the region selector button exists and displays the correct region text
       cy.get(this.elements.geoLocation, { timeout: 10000 })
         .should("exist")
         .invoke("text")
-        .should("match", /UK|US/);
+        .should("contain", "UK");
     });
   }
 }
