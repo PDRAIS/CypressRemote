@@ -29,5 +29,5 @@ jobs:
       run: npm install --legacy-peer-deps  # Adjust for your package manager if not using npm
  
     - name: Run only first-test-sg.cy.js
-      run: npx cypress run --record --spec "cypress/e2e/1-getting-started/first-test-sg.cy.js"
+      run: npx cypress run --spec "cypress/e2e/1-getting-started/first-test-sg.cy.js"
      

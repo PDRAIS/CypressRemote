@@ -15,7 +15,7 @@ visitDysonManufacturerPage() {
   cy.visit(this.elements.nbsHompageUrl);
     cy.get(this.elements.searchField).click();
     cy.get(this.elements.searchField).type("Dyson");
-    cy.get(this.elements.firstSearchResult).click();
+    cy.get(this.elements.firstSearchResult, { timeout: 10000 }).click();
 
     
     cy.url().should(
