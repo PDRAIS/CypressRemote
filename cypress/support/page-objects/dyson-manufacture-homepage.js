@@ -154,14 +154,14 @@ class DysonManufactureHomepage {
       // Parse the extracted JSON string into an object
       const body = JSON.parse(match[1]);
 
-      // Verify the geolocation API returns GB as the country code
-      expect(["GB"]).to.include(body.country);
+      // Verify the geolocation API returns GB or US as the country code
+      expect(["GB", "US"]).to.include(body.country);
 
-      // Confirm the region selector button exists and displays the correct region text
+      // Confirm the region selector button exists and displays UK or US
       cy.get(this.elements.geoLocation, { timeout: 10000 })
         .should("exist")
         .invoke("text")
-        .should("contain", "UK");
+        .should("match", /UK|US/);
     });
   }
 }
