@@ -8,9 +8,12 @@
   "main": "index.js",
   "scripts": {
     "cypress:open": "cypress open",
-    "cypress:run": "cypress run"
-},
+    "cypress:run": "cypress run --spec cypress/e2e/1-getting-started/first-test-sg.cy.js"
+  },
   "devDependencies": {
-    "cypress": "^15.6.0"
+    "axe-core": "^4.11.1",
+    "cypress": "^15.10.0",
+    "cypress-axe": "^1.7.0",
+    "cypress-image-snapshot": "^4.0.1"
   }
 }
