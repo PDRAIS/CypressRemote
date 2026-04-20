@@ -6,6 +6,7 @@ const path = require("path");
 const fs = require("fs");
 
 module.exports = defineConfig({
+  projectId: "jrhhew",
   e2e: {
     // NOTE: Storing secrets directly in this file is insecure for shared repositories.
     // Prefer using CI/CD secret storage or environment variables in production.
