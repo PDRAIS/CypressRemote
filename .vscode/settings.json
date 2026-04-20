@@ -1,3 +1,8 @@
 {
-    "workbench.colorTheme": "Visual Studio Light"
+    "workbench.colorTheme": "Visual Studio Light",
+    "cucumberautocomplete.steps": [
+        "cypress/e2e/step_definitions/*.js"
+    ],
+    "cucumberautocomplete.syncFeatures": "cypress/e2e/features/*.feature"
+
 }

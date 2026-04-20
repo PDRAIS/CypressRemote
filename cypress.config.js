@@ -4,6 +4,9 @@ const {
 } = require("cypress-image-snapshot/plugin");
 const path = require("path");
 const fs = require("fs");
+const createBundler = require("@bahmutov/cypress-esbuild-preprocessor");
+const preprocessor = require("@badeball/cypress-cucumber-preprocessor");
+const createEsbuildPlugin = require("@badeball/cypress-cucumber-preprocessor/esbuild");
 
 module.exports = defineConfig({
   projectId: "jrhhew",
